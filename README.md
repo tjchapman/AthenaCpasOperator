@@ -31,7 +31,8 @@ def main():
                                   db="your-database",
                                   table="your-target-table",
                                   sql="sql-select-string",
-                                  partition_kv="{'Key1': 'Value1', 'Key2':'Value2'}"
+                                  partition_kv="{'Key1': 'Value1', 'Key2':'Value2'}",
+                                  save_mode='overwrite'
     )
 
     cpas_operator.execute()
