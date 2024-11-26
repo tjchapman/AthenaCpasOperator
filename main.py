@@ -1,5 +1,5 @@
-from AthenaCpasOperator.athena_cpas import CpasOperator
 import logging
+from AthenaCpasOperator.athena_cpas import CpasOperator
 
 logger=logging.getLogger(__name__)
 
@@ -9,8 +9,8 @@ def main():
     cpas_operator = CpasOperator(source="your-data-catalog",
                                   db="your-database",
                                   table="your-target-table",
-                                  sql="sql-select-string",
-                                  partition_kv="{'Key1': 'Value1', 'Key2':'Value2'}",
+                                  sql="select * from your-database.your-source-table",
+                                  partition_kv={'Key1': 'Value1', 'Key2':'Value2'},
                                   save_mode='overwrite'
     )
 

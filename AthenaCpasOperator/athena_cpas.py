@@ -1,13 +1,14 @@
-import logging
-import time
-from typing import Dict, List
-from AthenaCpasOperator import glue_client, athena_client
-from AthenaCpasOperator import s3_client, s3_resource
-import random
 import re
+import time
+import random
 import string
+import logging
+from typing import Dict, List
 from datetime import datetime, timezone
 from botocore.exceptions import ClientError
+from AthenaCpasOperator import s3_client, s3_resource
+from AthenaCpasOperator import glue_client, athena_client
+
 
 logger = logging.getLogger(__name__)
 
@@ -328,7 +329,7 @@ class CpasOperator():
             col_stmts.append(f"{c['name']} {c['type']}")
         logging.info(f"Detect columns{col_stmts}")
 
-        tmp_table = f"operator_temp_apas_tc" \
+        tmp_table = f"operator_temp_apas_" \
             f"_{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}" \
             f"_{self._random_str()}"
         
