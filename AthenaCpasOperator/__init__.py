@@ -1,6 +1,15 @@
-from boto3 import client, resource
+import logging
 from os import getenv
 from dotenv import load_dotenv
+from boto3 import client, resource
+
+logger = logging.getLogger(__name__)
+
+FORMAT= "%(levelname)s\t%(asctime)s\t%(funcName)s\t%(message)s\t"
+
+logging.basicConfig(level=logging.INFO,
+                     format=FORMAT)
+
 
 load_dotenv()
 

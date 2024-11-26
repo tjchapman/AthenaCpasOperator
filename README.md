@@ -6,21 +6,15 @@ This is tweaked and refactored from an airflow plug-in that allows you to do the
 
 You'll need an AWS account with provisioned keys for Glue, S3, Athena.
 
-Link to plug-in: https://github.com/civitaspo/airflow-plugin-glue_presto_apas
-
-## Install requirements:
-
-```
-pip install -r requirements.txt
-```
+Link to open source Airflow plug-in: https://github.com/civitaspo/airflow-plugin-glue_presto_apas
 
 ## Example on how to use:
 
 - Example found in 'main.py'
 
 ```
-from AthenaCpasOperator.athena_cpas import CpasOperator
 import logging
+from AthenaCpasOperator.athena_cpas import CpasOperator
 
 logger=logging.getLogger(__name__)
 
@@ -30,8 +24,8 @@ def main():
     cpas_operator = CpasOperator(source="your-data-catalog",
                                   db="your-database",
                                   table="your-target-table",
-                                  sql="sql-select-string",
-                                  partition_kv="{'Key1': 'Value1', 'Key2':'Value2'}",
+                                  sql="select * from your-database.your-source-table",
+                                  partition_kv={'Key1': 'Value1', 'Key2':'Value2'},
                                   save_mode='overwrite'
     )
 
@@ -41,3 +35,9 @@ if __name__ == "__main__":
     main()
 
 ```
+
+### To run example found in main.py:
+
+1. Enter own inputs (database, table, keys, sql string etc.)
+2. `make run` -> to run it
+3. `make clean` -> to tidy up after
